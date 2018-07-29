@@ -64,29 +64,18 @@ public class Test11 {
         }
 
         // 递归求一半的值
-        double result = powerWithUnsignedExponent(base, exponent >> 2);
+        // 我们用右移运算符代替了除以2，
+        double result = powerWithUnsignedExponent(base, exponent >> 1);
 
         // 求最终的值，如果是奇数就还要剩以一次底数
         result *= result;
-        if (exponent % 2 != 0) {
+        // 用位与运算符代替了求余运算符（%）来判断一个数是奇数还是偶数。
+        if ((exponent & 0x1) == 1) {
+//        if (exponent % 2 != 0) {
             result *= base;
         }
 
         // 返回结果
         return result;
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(0.0000000000000000000000001111 == 0);
-        System.out.println(0.0000000000000000000000000000 == 0);
-
-        System.out.println(power(2, -4));
-        System.out.println(power(2, 4));
-        System.out.println(power(2, 0));
-        System.out.println(power(0.00000000000000000000000000001, -1));
-        System.out.println(power(0.00000000000000000000000000001, 1));
-        System.out.println(power(0.00000000000000000000000000001, 0));
-        System.out.println(power(0.00000000000000000000000000000, 0));
     }
 }
